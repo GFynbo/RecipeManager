@@ -1,10 +1,7 @@
 # RecipeManager
----
 
 Welcome to the RecipeManager! This is a Java project written as a way to store and keep track of tested recipes with 
 various additional features. Tasks are outlined below.
-
----
 
 ## Tasks
 * [ ] Finish the following classes:
