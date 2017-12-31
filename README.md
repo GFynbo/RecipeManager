@@ -13,8 +13,12 @@ various additional features. Tasks are outlined below.
     * Directions
     * CookTime
     * Review
-* [ ] Add the rest of the features to the README
+* [ ] Add the rest of the features and directions to the README
 * [ ] Add additional classes for future features
+
+## How to run
+1. Ensure you have Java 8 SDK
+2. TODO
 
 ## Footer
 
