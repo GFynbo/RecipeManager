@@ -13,4 +13,8 @@ public class Recipe {
         cts = ct;
         rv = review;
     }
+
+    public Recipe() {
+        System.out.println("Assemble recipe without given ingredients.");
+    }
 }
