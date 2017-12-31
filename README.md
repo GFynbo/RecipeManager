@@ -8,11 +8,11 @@ various additional features. Tasks are outlined below.
 
 ## Tasks
 * [ ] Finish the following classes:
-    * Recipe
-    * Ingredient
-    * Directions
-    * CookTime
-    * Review
+    * [ ] Recipe
+    * [ ] Ingredient
+    * [ ] Directions
+    * [ ] CookTime
+    * [ ] Review
 * [ ] Add the rest of the features and directions to the README
 * [ ] Add additional classes for future features
 
