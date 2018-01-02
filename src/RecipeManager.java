@@ -8,5 +8,7 @@ public class RecipeManager {
         Ingredient[] ing = new Ingredient[5];
 
         Recipe meatballs = new Recipe(ing, dirs, time, rv);
+
+        Manager mg = new Manager();
     }
 }
