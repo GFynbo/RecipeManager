@@ -26,12 +26,12 @@ public class Recipe {
         String[] steps = dirs.returnDirections();
 
         recipePrint += (name + "\n\n");
-        recipePrint += ("Cooking time: " + cts + "\n");
+        recipePrint += ("Cooking time: " + cts.returnTime() + " minutes\n\n");
         recipePrint += ("Ingredients:\n");
-        recipePrint += (ings.returnIngredient() + " : " + ings.returnIngredient());
+        recipePrint += (ings.returnIngredient() + " - " + ings.returnMeasurement() + "\n\n");
         recipePrint += ("Directions:\n");
         for (int i = 0; i < dirs.returnDirectionCount(); i++) {
-            recipePrint += ("Step " + (i + 1) + ": " + steps[i]);
+            recipePrint += ("Step " + (i + 1) + ": " + steps[i] + "\n");
         }
         recipePrint += ("\n");
         recipePrint += ("Review: " + rv.returnStars() + "/5");
