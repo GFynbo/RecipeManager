@@ -3,8 +3,8 @@ public class RecipeManager {
         System.out.println("Hello! Welcome to the RecipeManager.");
 
         Directions dirs = new Directions();
-        CookTime time = new CookTime(15);
-        Review rv = new Review(4);
+        CookTime time = new CookTime();
+        Review rv = new Review();
         Ingredient[] ing = new Ingredient[5];
 
         Recipe meatballs = new Recipe(ing, dirs, time, rv);

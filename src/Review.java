@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Review {
     int stars;
 
@@ -7,6 +9,10 @@ public class Review {
     }
 
     public Review() {
+        Scanner sc = new Scanner(System.in);
         System.out.println("This is the review constructor!");
+
+        System.out.println("Please input your review out of five stars: ");
+        stars = Integer.parseInt(sc.nextLine());
     }
 }
