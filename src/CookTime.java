@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class CookTime {
-    int totalTime;
+    private int totalTime;
 
     public CookTime(int time) {
         totalTime = time;
@@ -14,5 +14,9 @@ public class CookTime {
         System.out.println("Please input the total cooking time: ");
         int time = Integer.parseInt(sc.nextLine());
         totalTime = time;
+    }
+
+    public int returnTime() {
+        return totalTime;
     }
 }

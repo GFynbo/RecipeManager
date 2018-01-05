@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Ingredient {
-    String ingredient;
-    String measurement;
+    private String ingredient;
+    private String measurement;
 
     public Ingredient(String ingredientName, String measurementAmt) {
         System.out.println("This is the ingredient constructor!");
@@ -17,5 +17,13 @@ public class Ingredient {
         ingredient = sc.nextLine();
         System.out.println("Please input the amount: ");
         measurement = sc.nextLine();
+    }
+
+    public String returnIngredient() {
+        return ingredient;
+    }
+
+    public String returnMeasurement() {
+        return measurement;
     }
 }

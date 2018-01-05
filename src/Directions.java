@@ -43,4 +43,8 @@ public class Directions {
     public int returnDirectionCount() {
         return directions.length;
     }
+
+    public String[] returnDirections() {
+        return directions;
+    }
 }

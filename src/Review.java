@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Review {
-    int stars;
+    private int stars;
 
     public Review(int givenStars) {
         stars = givenStars;
@@ -14,5 +14,9 @@ public class Review {
 
         System.out.println("Please input your review out of five stars: ");
         stars = Integer.parseInt(sc.nextLine());
+    }
+
+    public int returnStars() {
+        return stars;
     }
 }
