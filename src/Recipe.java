@@ -23,18 +23,20 @@ public class Recipe {
     public String toString() {
         String recipePrint = new String();
 
-        String[] steps = dirs.returnDirections();
+        recipePrint = name;
 
-        recipePrint += (name + "\n\n");
-        recipePrint += ("Cooking time: " + cts.returnTime() + " minutes\n\n");
-        recipePrint += ("Ingredients:\n");
-        recipePrint += (ings.returnIngredient() + " - " + ings.returnMeasurement() + "\n\n");
-        recipePrint += ("Directions:\n");
-        for (int i = 0; i < dirs.returnDirectionCount(); i++) {
-            recipePrint += ("Step " + (i + 1) + ": " + steps[i] + "\n");
-        }
-        recipePrint += ("\n");
-        recipePrint += ("Review: " + rv.returnStars() + "/5");
+//        String[] steps = dirs.returnDirections();
+//
+//        recipePrint += (name + "\n\n");
+//        recipePrint += ("Cooking time: " + cts.returnTime() + " minutes\n\n");
+//        recipePrint += ("Ingredients:\n");
+//        recipePrint += (ings.returnIngredient() + " - " + ings.returnMeasurement() + "\n\n");
+//        recipePrint += ("Directions:\n");
+//        for (int i = 0; i < dirs.returnDirectionCount(); i++) {
+//            recipePrint += ("Step " + (i + 1) + ": " + steps[i] + "\n");
+//        }
+//        recipePrint += ("\n");
+//        recipePrint += ("Review: " + rv.returnStars() + "/5");
 
         return recipePrint;
     }

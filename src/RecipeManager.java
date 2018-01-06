@@ -11,7 +11,7 @@ public class RecipeManager {
     private JTabbedPane mainTabbedPane;
     private JPanel existingRecipePane;
     private JPanel newRecipePane;
-    private JList<Recipe> existingRecipeList = new JList<>();
+    private JList existingRecipeList = new JList<>();
     private DefaultListModel<Recipe> model = new DefaultListModel<>();
     private JTextField newRecipeName;
     private JTextField newRecipeCookTime;
@@ -19,27 +19,12 @@ public class RecipeManager {
     private JTextArea newRecipeIngredients;
     private JButton createNewButton;
     private JButton createButton;
-    private JEditorPane existingRecipeDisplay;
 
     public RecipeManager() {
 
-        frame.setContentPane(mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        existingRecipeList.setModel(model);
 
-        existingRecipeList.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                System.out.println("Selected a new recipe!");
-            }
-        });
-    }
 
-    public static void main(String[] args) {
-
-        // create initial test recipe
-        System.out.println("Hello! Welcome to the RecipeManager.");
         Directions dirs = new Directions(3);
         CookTime time = new CookTime(15);
         Review rv = new Review(4);
@@ -48,14 +33,30 @@ public class RecipeManager {
 
         Recipe meatballs = new Recipe(recipeName, ing, dirs, time, rv);
 
-        DefaultListModel recipes = new DefaultListModel();
+        model.addElement(meatballs);
 
-        recipes.addElement(meatballs);
+        existingRecipeList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                System.out.println("Selected a new recipe!");
+            }
+        });
+
+        frame.setContentPane(mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+
+        // create initial test recipe
+        System.out.println("Hello! Welcome to the RecipeManager.");
+
 
         // run the frame for the actual app
-        SwingUtilities.invokeLater(RecipeManager::new);
 
-        System.out.println(meatballs);
+        RecipeManager mainRecipeManager = new RecipeManager();
 
     }
 }
