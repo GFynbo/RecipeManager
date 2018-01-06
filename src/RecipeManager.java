@@ -5,8 +5,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class RecipeManager {
+    private JFrame frame = new JFrame("RecipeManager");
+
     private JPanel mainPanel;
-    private JTabbedPane tabbedPane1;
+    private JTabbedPane mainTabbedPane;
     private JPanel existingRecipePane;
     private JPanel newRecipePane;
     private JList existingRecipeList;
@@ -19,6 +21,11 @@ public class RecipeManager {
     private JEditorPane existingRecipeDisplay;
 
     public RecipeManager() {
+
+        frame.setContentPane(new RecipeManager().mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
 
         existingRecipeList.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -40,25 +47,14 @@ public class RecipeManager {
 
         Recipe meatballs = new Recipe(recipeName, ing, dirs, time, rv);
 
+        DefaultListModel recipes = new DefaultListModel();
+
+        recipes.addElement(meatballs);
+
         // run the frame for the actual app
-        JFrame frame = new JFrame("RecipeManager");
-        frame.setContentPane(new RecipeManager().mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        SwingUtilities.invokeLater(RecipeManager::new);
 
         System.out.println(meatballs);
 
-    }
-
-    public void setData(Recipe data) {
-        
-    }
-
-    public void getData(Recipe data) {
-    }
-
-    public boolean isModified(Recipe data) {
-        return false;
     }
 }
