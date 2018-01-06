@@ -11,7 +11,8 @@ public class RecipeManager {
     private JTabbedPane mainTabbedPane;
     private JPanel existingRecipePane;
     private JPanel newRecipePane;
-    private JList existingRecipeList;
+    private JList<Recipe> existingRecipeList = new JList<>();
+    private DefaultListModel<Recipe> model = new DefaultListModel<>();
     private JTextField newRecipeName;
     private JTextField newRecipeCookTime;
     private JTextArea newRecipeDirections;
