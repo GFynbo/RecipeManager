@@ -22,7 +22,7 @@ public class RecipeManager {
 
     public RecipeManager() {
 
-        frame.setContentPane(new RecipeManager().mainPanel);
+        frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
