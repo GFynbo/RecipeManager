@@ -9,11 +9,11 @@ public class Recipe {
     // constructor for the recipe class, gets the required components and assembles the recipe
     public Recipe(String recipeName, Ingredient ingredients, Directions directions, CookTime ct, Review review) {
         System.out.println("Assembling the new recipe!");
-        ings = ingredients;
-        dirs = directions;
-        cts = ct;
-        rv = review;
-        name = recipeName;
+        this.ings = ingredients;
+        this.dirs = directions;
+        this.cts = ct;
+        this.rv = review;
+        this.name = recipeName;
     }
 
     public Recipe() {
