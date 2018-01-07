@@ -1,26 +1,36 @@
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class RecipeManager {
 
-    public RecipeManager() {
+public class RecipeManager extends Application implements EventHandler<ActionEvent> {
 
-        Directions dirs = new Directions(3);
-        CookTime time = new CookTime(15);
-        Review rv = new Review(4);
-        Ingredient ing = new Ingredient("Salt", "2 tbsp");
-        String recipeName = "Meatballs";
-
-        Recipe meatballs = new Recipe(recipeName, ing, dirs, time, rv);
-    }
+    Button button;
 
     public static void main(String[] args) {
+        launch(args);
+    }
 
-        // create initial test recipe
-        System.out.println("Hello! Welcome to the RecipeManager.");
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("RecipeManager");
 
+        button = new Button("Create");
+        button.setOnAction(this);
 
-        // run the frame for the actual app
+        StackPane layout = new StackPane();
+        layout.getChildren().add(button);
 
-        RecipeManager mainRecipeManager = new RecipeManager();
+        Scene mainScene = new Scene(layout, 600, 400);
+        primaryStage.setScene(mainScene);
+        primaryStage.show();
+    }
+
+    public void handle(ActionEvent event) {
 
     }
 }
