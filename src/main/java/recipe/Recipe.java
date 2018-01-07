@@ -1,3 +1,5 @@
+package recipe;
+
 public class Recipe {
     // class variables for the recipe
     private Ingredient ings;
@@ -31,12 +33,12 @@ public class Recipe {
 //        recipePrint += ("Cooking time: " + cts.returnTime() + " minutes\n\n");
 //        recipePrint += ("Ingredients:\n");
 //        recipePrint += (ings.returnIngredient() + " - " + ings.returnMeasurement() + "\n\n");
-//        recipePrint += ("Directions:\n");
+//        recipePrint += ("recipe.Directions:\n");
 //        for (int i = 0; i < dirs.returnDirectionCount(); i++) {
 //            recipePrint += ("Step " + (i + 1) + ": " + steps[i] + "\n");
 //        }
 //        recipePrint += ("\n");
-//        recipePrint += ("Review: " + rv.returnStars() + "/5");
+//        recipePrint += ("recipe.Review: " + rv.returnStars() + "/5");
 
         return recipePrint;
     }
