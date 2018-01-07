@@ -21,7 +21,7 @@ public class Recipe {
     }
 
     public String toString() {
-        String recipePrint = new String();
+        String recipePrint;
 
         recipePrint = name;
 

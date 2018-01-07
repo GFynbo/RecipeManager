@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 public class Directions {
-    String[] directions;
+    private String[] directions;
 
     public Directions(int numSteps) {
         System.out.println("This is the directions constructor!");
-        directions = new String[numSteps];
+        this.directions = new String[numSteps];
 
         Scanner getDirections = new Scanner(System.in);
 
@@ -27,7 +27,7 @@ public class Directions {
         int numSteps = Integer.parseInt(getDirections.nextLine());
 
         // setup directions
-        directions = new String[numSteps];
+        this.directions = new String[numSteps];
 
         // have the user input the directions
         for (int i = 0; i < numSteps; i++) {
@@ -41,10 +41,10 @@ public class Directions {
     }
 
     public int returnDirectionCount() {
-        return directions.length;
+        return this.directions.length;
     }
 
     public String[] returnDirections() {
-        return directions;
+        return this.directions;
     }
 }

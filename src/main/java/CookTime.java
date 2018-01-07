@@ -4,7 +4,7 @@ public class CookTime {
     private int totalTime;
 
     public CookTime(int time) {
-        totalTime = time;
+        this.totalTime = time;
         System.out.println("This is the cook time constructor with a total time " + totalTime + "!");
     }
 
@@ -13,10 +13,10 @@ public class CookTime {
         System.out.println("This is the cook time constructor!");
         System.out.println("Please input the total cooking time: ");
         int time = Integer.parseInt(sc.nextLine());
-        totalTime = time;
+        this.totalTime = time;
     }
 
     public int returnTime() {
-        return totalTime;
+        return this.totalTime;
     }
 }

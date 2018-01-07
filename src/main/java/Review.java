@@ -4,8 +4,8 @@ public class Review {
     private int stars;
 
     public Review(int givenStars) {
-        stars = givenStars;
-        System.out.println("This is the review constructor with a review of " + stars + " stars!");
+        this.stars = givenStars;
+        System.out.println("This is the review constructor with a review of " + stars + "/5 stars!");
     }
 
     public Review() {
@@ -13,10 +13,10 @@ public class Review {
         System.out.println("This is the review constructor!");
 
         System.out.println("Please input your review out of five stars: ");
-        stars = Integer.parseInt(sc.nextLine());
+        this.stars = Integer.parseInt(sc.nextLine());
     }
 
     public int returnStars() {
-        return stars;
+        return this.stars;
     }
 }
