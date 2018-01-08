@@ -1,13 +1,22 @@
 package recipe;
 
-import javafx.scene.control.Label;
-
+import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.event.ActionEvent;
+import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
 
 public class RecipeController {
-    public Label helloWorld;
+    @FXML MenuBar myMenu;
+    @FXML MenuItem myMenuClose;
 
-    public void sayHelloWorld(ActionEvent actionEvent) {
-        this.helloWorld.setText("Hello, world!");
+    @FXML
+    protected void closeWindow(ActionEvent actionEvent) {
+        Stage stg = (Stage)myMenu.getScene().getWindow();
+        Scene scn = stg.getScene();
+        stg.setScene(scn);
+        stg.close();
     }
 }
