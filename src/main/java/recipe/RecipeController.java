@@ -14,7 +14,10 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
-public class RecipeController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class RecipeController implements Initializable {
 
     @FXML private MenuBar myMenu;
     @FXML private ListView<Recipe> recipeList;
@@ -52,5 +55,10 @@ public class RecipeController {
                 }
             }
         });
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }
