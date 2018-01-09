@@ -8,10 +8,7 @@ import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -21,6 +18,7 @@ public class RecipeController implements Initializable {
 
     @FXML private MenuBar myMenu;
     @FXML private ListView<Recipe> recipeList;
+    @FXML private Label recipeTitle;
 
     @FXML
     protected void closeWindow(ActionEvent actionEvent) {
