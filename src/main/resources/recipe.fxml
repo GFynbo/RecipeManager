@@ -14,7 +14,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem disable="true" mnemonicParsing="false" text="New Recipe" />
+              <MenuItem disable="false" mnemonicParsing="false" text="New Recipe" onAction="#addRecipe" />
               <MenuItem disable="true" mnemonicParsing="false" text="Import Recipe" />
               <MenuItem mnemonicParsing="false" text="Close" onAction="#closeWindow" />
             </items>
