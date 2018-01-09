@@ -10,6 +10,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class RecipeManager extends Application {
 
     @Override
@@ -17,6 +19,7 @@ public class RecipeManager extends Application {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("recipe.fxml"));
 
         primaryStage.setTitle("RecipeManager");
+
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
     }

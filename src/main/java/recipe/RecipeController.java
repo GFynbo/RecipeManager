@@ -28,6 +28,11 @@ public class RecipeController implements Initializable {
 
     @FXML
     protected void addRecipe(ActionEvent actionEvent) {
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         ObservableList<Recipe> recipes = FXCollections.observableArrayList();
 
         String name = "Meatballs";
@@ -43,20 +48,15 @@ public class RecipeController implements Initializable {
 
         recipeList.setCellFactory(param -> new ListCell<Recipe>() {
             @Override
-            protected void updateItem(Recipe recp, boolean empty) {
-                super.updateItem(recp, empty);
+            protected void updateItem(Recipe item, boolean empty) {
+                super.updateItem(item, empty);
 
-                if (empty || recp == null || recp.toString() == null) {
+                if (empty || item == null || item.getName() == null) {
                     setText(null);
                 } else {
-                    setText(recp.toString());
+                    setText(item.getName());
                 }
             }
         });
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 }

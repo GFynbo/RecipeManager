@@ -22,6 +22,14 @@ public class Recipe {
         System.out.println("Assemble recipe without given ingredients.");
     }
 
+    public String getName() {
+        String recipePrint;
+
+        recipePrint = name;
+
+        return recipePrint;
+    }
+
     public String toString() {
         String recipePrint;
 
