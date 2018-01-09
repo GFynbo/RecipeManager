@@ -8,15 +8,15 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipe.RecipeController">
    <children>
-      <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" fx:id="myMenu">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem disable="true" mnemonicParsing="false" text="New Recipe" />
-                  <MenuItem disable="true" mnemonicParsing="false" text="Import Recipe" />
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem disable="true" mnemonicParsing="false" text="New Recipe" />
+              <MenuItem disable="true" mnemonicParsing="false" text="Import Recipe" />
+              <MenuItem mnemonicParsing="false" text="Close" onAction="#closeWindow" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
