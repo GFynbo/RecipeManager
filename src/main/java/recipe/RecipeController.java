@@ -4,9 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.event.ActionEvent;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -17,7 +15,7 @@ import java.util.ResourceBundle;
 public class RecipeController implements Initializable {
 
     @FXML private MenuBar myMenu;
-    @FXML private ListView<Recipe> recipeList;
+    @FXML private ListView<Recipe> recipeList = new ListView<Recipe>();
     @FXML private Label recipeTitle;
 
     @FXML
@@ -44,7 +42,7 @@ public class RecipeController implements Initializable {
         Recipe mb = new Recipe(name, ings, direct, ct, rv);
         recipes.add(mb);
 
-        recipeList = new ListView<>(recipes);
+        recipeList.setItems(recipes);
 
         recipeList.setCellFactory(param -> new ListCell<Recipe>() {
             @Override
