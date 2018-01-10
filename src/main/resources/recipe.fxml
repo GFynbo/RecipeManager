@@ -70,11 +70,17 @@
                                     <Insets left="5.0" />
                                  </padding>
                               </Label>
-                              <Region HBox.hgrow="ALWAYS" />
+                              <Region HBox.hgrow="ALWAYS">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets></Region>
                            </children>
                            <padding>
                               <Insets top="10.0" />
                            </padding>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
                         </HBox>
                         <HBox VBox.vgrow="NEVER">
                            <children>
@@ -85,6 +91,22 @@
                               </Label>
                               <Region HBox.hgrow="ALWAYS" />
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox VBox.vgrow="NEVER">
+                           <children>
+                              <Label fx:id="recipeDirections" wrapText="true">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <Region HBox.hgrow="ALWAYS" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
                         </HBox>
                         <Region VBox.vgrow="ALWAYS" />
                      </children>

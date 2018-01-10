@@ -5,6 +5,13 @@ import java.util.Scanner;
 public class Directions {
     private String[] directions;
 
+    public Directions(int numSteps, String[] directions) {
+        System.out.println("This is the directions constructor!");
+        this.directions = new String[numSteps];
+
+        this.directions = directions;
+    }
+
     public Directions(int numSteps) {
         System.out.println("This is the directions constructor!");
         this.directions = new String[numSteps];

@@ -40,6 +40,15 @@ public class Recipe {
         return cook;
     }
 
+    public String getDirections() {
+        String[] directions = dirs.returnDirections();
+        String outDirections = "";
+        for (int i = 0; i < directions.length; i++) {
+            outDirections += "Step " + (i + 1) + ": " + directions[i] + "\n\n";
+        }
+        return outDirections;
+    }
+
     public String toString() {
         String recipePrint;
 
