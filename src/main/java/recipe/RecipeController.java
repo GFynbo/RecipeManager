@@ -5,10 +5,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -30,8 +33,15 @@ public class RecipeController implements Initializable {
     }
 
     @FXML
-    protected void addRecipe(ActionEvent actionEvent) {
-
+    protected void addRecipe(ActionEvent actionEvent) throws Exception {
+        FXMLLoader fxmlLoader = FXMLLoader.load(getClass().getClassLoader().getResource("recipeNew.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("RecipeManager");
+        stage.setScene(new Scene(root1));
+        stage.setResizable(false);
+        stage.show();
     }
 
     @Override
