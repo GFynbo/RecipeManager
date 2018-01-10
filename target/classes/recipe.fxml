@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -61,11 +60,26 @@
                            </children>
                         </HBox>
                         <Separator prefWidth="200.0" />
-                        <Region VBox.vgrow="ALWAYS" />
                         <HBox>
                            <children>
+                              <Label fx:id="recipeCookTime">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
                               <Region HBox.hgrow="ALWAYS" />
-                              <ProgressBar prefWidth="300.0" progress="0.33" />
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox VBox.vgrow="NEVER">
+                           <children>
+                              <Label fx:id="recipeReview">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
                               <Region HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>

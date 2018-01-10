@@ -1,5 +1,7 @@
 package recipe;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,6 +19,8 @@ public class RecipeController implements Initializable {
     @FXML private MenuBar myMenu;
     @FXML private ListView<Recipe> recipeList = new ListView<Recipe>();
     @FXML private Label recipeTitle;
+    @FXML private Label recipeCookTime;
+    @FXML private Label recipeReview;
 
     @FXML
     protected void closeWindow(ActionEvent actionEvent) {
@@ -54,6 +58,15 @@ public class RecipeController implements Initializable {
                 } else {
                     setText(item.getName());
                 }
+            }
+        });
+
+        recipeList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Recipe>() {
+            @Override
+            public void changed(ObservableValue<? extends Recipe> observable, Recipe oldValue, Recipe newValue) {
+                recipeTitle.setText(newValue.getName());
+                recipeCookTime.setText("Total cooking time: " + newValue.getCookTime() + " minutes");
+                recipeReview.setText("Your review: " + newValue.getReview() + "/5 stars");
             }
         });
     }

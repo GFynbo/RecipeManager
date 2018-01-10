@@ -30,6 +30,16 @@ public class Recipe {
         return recipePrint;
     }
 
+    public String getReview() {
+        String review = new String(Integer.toString(rv.returnStars()));
+        return review;
+    }
+
+    public String getCookTime() {
+        String cook = new String(Integer.toString(cts.returnTime()));
+        return cook;
+    }
+
     public String toString() {
         String recipePrint;
 
