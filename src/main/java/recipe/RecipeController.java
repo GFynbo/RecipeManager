@@ -24,6 +24,7 @@ public class RecipeController implements Initializable {
     @FXML private Label recipeTitle;
     @FXML private Label recipeCookTime;
     @FXML private Label recipeReview;
+    @FXML private Label recipeIngredients;
     @FXML private Label recipeDirections;
 
     @FXML
@@ -81,6 +82,7 @@ public class RecipeController implements Initializable {
                 recipeTitle.setText(newValue.getName());
                 recipeCookTime.setText("Total cooking time: " + newValue.getCookTime() + " minutes");
                 recipeReview.setText("Your review: " + newValue.getReview() + "/5 stars");
+                recipeIngredients.setText("Ingredients:\n\n" + newValue.getIngredients());
                 recipeDirections.setText("Directions:\n\n" + newValue.getDirections());
             }
         });

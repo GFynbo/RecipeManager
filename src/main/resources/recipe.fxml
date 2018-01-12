@@ -95,6 +95,16 @@
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </HBox>
+                        <HBox>
+                           <children>
+                              <Label fx:id="recipeIngredients" wrapText="true">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <Region HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
                         <HBox VBox.vgrow="NEVER">
                            <children>
                               <Label fx:id="recipeDirections" wrapText="true">

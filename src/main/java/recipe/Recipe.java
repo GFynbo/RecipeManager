@@ -49,6 +49,12 @@ public class Recipe {
         return outDirections;
     }
 
+    public String getIngredients() {
+        String outIngredients = "Ingredients: \n\n";
+        outIngredients += ings.returnIngredient() + " " + ings.returnMeasurement() + "\n";
+        return outIngredients;
+    }
+
     public String toString() {
         String recipePrint;
 
