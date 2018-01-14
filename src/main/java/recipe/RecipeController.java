@@ -82,7 +82,7 @@ public class RecipeController implements Initializable {
                 recipeTitle.setText(newValue.getName());
                 recipeCookTime.setText("Total cooking time: " + newValue.getCookTime() + " minutes");
                 recipeReview.setText("Your review: " + newValue.getReview() + "/5 stars");
-                recipeIngredients.setText("Ingredients:\n\n" + newValue.getIngredients());
+                recipeIngredients.setText("Ingredients:\n\n" + newValue.getIngredients() + "\n");
                 recipeDirections.setText("Directions:\n\n" + newValue.getDirections());
             }
         });

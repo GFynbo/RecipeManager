@@ -50,28 +50,26 @@ public class Recipe {
     }
 
     public String getIngredients() {
-        String outIngredients = "Ingredients: \n\n";
-        outIngredients += ings.returnIngredient() + " " + ings.returnMeasurement() + "\n";
+        String outIngredients = "";
+        outIngredients += ings.returnMeasurement() + " " + ings.returnIngredient() + "\n";
         return outIngredients;
     }
 
     public String toString() {
-        String recipePrint;
+        String recipePrint = "";
 
-        recipePrint = name;
+        String[] steps = dirs.returnDirections();
 
-//        String[] steps = dirs.returnDirections();
-//
-//        recipePrint += (name + "\n\n");
-//        recipePrint += ("Cooking time: " + cts.returnTime() + " minutes\n\n");
-//        recipePrint += ("Ingredients:\n");
-//        recipePrint += (ings.returnIngredient() + " - " + ings.returnMeasurement() + "\n\n");
-//        recipePrint += ("recipe.Directions:\n");
-//        for (int i = 0; i < dirs.returnDirectionCount(); i++) {
-//            recipePrint += ("Step " + (i + 1) + ": " + steps[i] + "\n");
-//        }
-//        recipePrint += ("\n");
-//        recipePrint += ("recipe.Review: " + rv.returnStars() + "/5");
+        recipePrint += (name + "\n\n");
+        recipePrint += ("Cooking time: " + cts.returnTime() + " minutes\n\n");
+        recipePrint += ("Ingredients:\n");
+        recipePrint += (ings.returnIngredient() + " - " + ings.returnMeasurement() + "\n\n");
+        recipePrint += ("recipe.Directions:\n");
+        for (int i = 0; i < dirs.returnDirectionCount(); i++) {
+            recipePrint += ("Step " + (i + 1) + ": " + steps[i] + "\n");
+        }
+        recipePrint += ("\n");
+        recipePrint += ("recipe.Review: " + rv.returnStars() + "/5");
 
         return recipePrint;
     }
