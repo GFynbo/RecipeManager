@@ -3,11 +3,14 @@ package recipe;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -22,6 +25,8 @@ public class RecipeManager extends Application {
 
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
+
+
     }
 
 

@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -26,6 +27,7 @@ public class RecipeController implements Initializable {
     @FXML private Label recipeReview;
     @FXML private Label recipeIngredients;
     @FXML private Label recipeDirections;
+    @FXML private VBox recipeMain;
 
     @FXML
     protected void closeWindow(ActionEvent actionEvent) {
@@ -35,14 +37,9 @@ public class RecipeController implements Initializable {
 
     @FXML
     protected void addRecipe(ActionEvent actionEvent) throws Exception {
-        FXMLLoader fxmlLoader = FXMLLoader.load(getClass().getClassLoader().getResource("recipeNew.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("RecipeManager");
-        stage.setScene(new Scene(root1));
-        stage.setResizable(false);
-        stage.show();
+        recipeMain.getChildren().clear();
+        recipeTitle.setText("New Recipe");
+        recipeMain.getChildren().addAll(recipeTitle);
     }
 
     @Override
@@ -79,11 +76,13 @@ public class RecipeController implements Initializable {
         recipeList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Recipe>() {
             @Override
             public void changed(ObservableValue<? extends Recipe> observable, Recipe oldValue, Recipe newValue) {
+                recipeMain.getChildren().clear();
                 recipeTitle.setText(newValue.getName());
                 recipeCookTime.setText("Total cooking time: " + newValue.getCookTime() + " minutes");
                 recipeReview.setText("Your review: " + newValue.getReview() + "/5 stars");
                 recipeIngredients.setText("Ingredients:\n\n" + newValue.getIngredients() + "\n");
                 recipeDirections.setText("Directions:\n\n" + newValue.getDirections());
+                recipeMain.getChildren().addAll(recipeTitle, recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
             }
         });
     }
