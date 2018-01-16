@@ -28,6 +28,7 @@ public class RecipeController implements Initializable {
     @FXML private Label recipeIngredients;
     @FXML private Label recipeDirections;
     @FXML private VBox recipeMain;
+    @FXML private VBox recipeListBox;
 
     @FXML
     protected void closeWindow(ActionEvent actionEvent) {
@@ -38,8 +39,24 @@ public class RecipeController implements Initializable {
     @FXML
     protected void addRecipe(ActionEvent actionEvent) throws Exception {
         recipeMain.getChildren().clear();
+        recipeListBox.setDisable(true);
         recipeTitle.setText("New Recipe");
-        recipeMain.getChildren().addAll(recipeTitle);
+        Label nameLabel = new Label("Recipe name: ");
+        TextField name = new TextField();
+        Label cookLabel = new Label("Total cooking time: ");
+        TextField cook = new TextField();
+        Label ingsLabel = new Label("Ingredients: ");
+        TextArea ingredients = new TextArea();
+        Label dirsLabel = new Label("Directions: ");
+        TextArea directions = new TextArea();
+        Button createRecipe = new Button("Create");
+        recipeMain.getChildren().addAll(recipeTitle, nameLabel, name, cookLabel, cook, ingsLabel, ingredients, dirsLabel,
+                directions, createRecipe);
+        createRecipe.addEventHandler(ActionEvent.ACTION, (e) -> {
+            recipeListBox.setDisable(false);
+            recipeListBox.requestFocus();
+            recipeMain.getChildren().clear();
+        });
     }
 
     @Override
