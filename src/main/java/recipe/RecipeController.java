@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -100,6 +101,8 @@ public class RecipeController implements Initializable {
                 recipeIngredients.setText("Ingredients:\n\n" + newValue.getIngredients() + "\n");
                 recipeDirections.setText("Directions:\n\n" + newValue.getDirections());
                 recipeMain.getChildren().addAll(recipeTitle, recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
+                recipeMain.setPadding(new Insets(10));
+                recipeMain.setSpacing(10);
             }
         });
     }
