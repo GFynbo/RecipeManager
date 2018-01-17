@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c63c867-efa3-4fdc-aace-29d32cf272dc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/recipe/RecipeController.java" afterPath="$PROJECT_DIR$/src/main/java/recipe/RecipeController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/recipe.fxml" afterPath="$PROJECT_DIR$/src/main/resources/recipe.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -76,11 +76,9 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="83" lean-forward="false" selection-start-line="16" selection-start-column="83" selection-end-line="16" selection-end-column="83" />
-              <folding>
-                <marker date="1516060992930" expanded="true" signature="2019:2245" ph="..." />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="17" column="83" lean-forward="false" selection-start-line="17" selection-start-column="83" selection-end-line="17" selection-end-column="83" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,13 +86,13 @@
       <file leaf-file-name="RecipeController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/recipe/RecipeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="56" column="18" lean-forward="false" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
+            <state relative-caret-position="288">
+              <caret line="112" column="47" lean-forward="false" selection-start-line="112" selection-start-column="47" selection-end-line="112" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#723#731#0" expanded="true" />
-                <element signature="e#3486#3866#0" expanded="true" />
-                <element signature="e#3865#3866#0" expanded="true" />
+                <element signature="e#4021#4401#0" expanded="true" />
+                <element signature="e#4400#4401#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -903,11 +901,9 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="83" lean-forward="false" selection-start-line="16" selection-start-column="83" selection-end-line="16" selection-end-column="83" />
-          <folding>
-            <marker date="1516060992930" expanded="true" signature="2019:2245" ph="..." />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="17" column="83" lean-forward="false" selection-start-line="17" selection-start-column="83" selection-end-line="17" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -936,13 +932,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/recipe/RecipeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="56" column="18" lean-forward="false" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
+        <state relative-caret-position="288">
+          <caret line="112" column="47" lean-forward="false" selection-start-line="112" selection-start-column="47" selection-end-line="112" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#723#731#0" expanded="true" />
-            <element signature="e#3486#3866#0" expanded="true" />
-            <element signature="e#3865#3866#0" expanded="true" />
+            <element signature="e#4021#4401#0" expanded="true" />
+            <element signature="e#4400#4401#0" expanded="true" />
           </folding>
         </state>
       </provider>

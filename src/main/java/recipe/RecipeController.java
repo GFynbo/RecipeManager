@@ -24,10 +24,6 @@ public class RecipeController implements Initializable {
     @FXML private MenuBar myMenu;
     @FXML private ListView<Recipe> recipeList = new ListView<Recipe>();
     @FXML private Label recipeTitle;
-    @FXML private Label recipeCookTime;
-    @FXML private Label recipeReview;
-    @FXML private Label recipeIngredients;
-    @FXML private Label recipeDirections;
     @FXML private VBox recipeMain;
     @FXML private VBox recipeListBox;
 
@@ -56,8 +52,8 @@ public class RecipeController implements Initializable {
                 directions, createRecipe);
         backButton.addEventHandler(ActionEvent.ACTION, (e) -> {
             recipeListBox.setDisable(false);
-            recipeListBox.requestFocus();
             recipeMain.getChildren().clear();
+            recipeList.getSelectionModel().selectFirst();
         });
     }
 
@@ -65,6 +61,7 @@ public class RecipeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<Recipe> recipes = FXCollections.observableArrayList();
 
+        // Add initial recipes for testing
         String name = "Meatballs";
         String[] dirs = {"Combine beef, veal, and pork in a large bowl. Add garlic, eggs, cheese, parsley, salt and pepper.",
                 "Blend bread crumbs into meat mixture. Slowly add the water 1/2 cup at a time. The mixture should be very moist but still hold its shape if rolled into meatballs. (I usually use about 1 1/4 cups of water). Shape into meatballs.",
@@ -76,6 +73,17 @@ public class RecipeController implements Initializable {
 
         Recipe mb = new Recipe(name, ings, direct, ct, rv);
         recipes.add(mb);
+
+        name = "Spaghetti";
+        String[] directs = {"Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease.",
+                "Stir diced tomatoes, tomato sauce, and tomato paste into the pan. Season with oregano, basil, salt, and pepper. Simmer spaghetti sauce for 1 hour, stirring occasionally."};
+        ings = new Ingredient("Salt", "1 tsp");
+        direct = new Directions(3, directs);
+        ct = new CookTime(10);
+        rv = new Review(5);
+
+        Recipe spg = new Recipe(name, ings, direct, ct, rv);
+        recipes.add(spg);
 
         recipeList.setItems(recipes);
 
@@ -97,10 +105,14 @@ public class RecipeController implements Initializable {
             public void changed(ObservableValue<? extends Recipe> observable, Recipe oldValue, Recipe newValue) {
                 recipeMain.getChildren().clear();
                 recipeTitle.setText(newValue.getName());
-                recipeCookTime.setText("Total cooking time: " + newValue.getCookTime() + " minutes");
-                recipeReview.setText("Your review: " + newValue.getReview() + "/5 stars");
-                recipeIngredients.setText("Ingredients:\n\n" + newValue.getIngredients() + "\n");
-                recipeDirections.setText("Directions:\n\n" + newValue.getDirections());
+                Label recipeCookTime = new Label("Total cooking time: " + newValue.getCookTime() + " minutes");
+                Label recipeReview = new Label("Your review: " + newValue.getReview() + "/5 stars");
+                Label recipeIngredients = new Label("Ingredients:\n\n" + newValue.getIngredients() + "\n");
+                Label recipeDirections = new Label("Directions:\n\n" + newValue.getDirections());
+                recipeCookTime.setWrapText(true);
+                recipeReview.setWrapText(true);
+                recipeDirections.setWrapText(true);
+                recipeIngredients.setWrapText(true);
                 recipeMain.getChildren().addAll(recipeTitle, recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
                 recipeMain.setPadding(new Insets(10));
                 recipeMain.setSpacing(10);
