@@ -42,6 +42,7 @@ public class RecipeController implements Initializable {
         recipeMain.getChildren().clear();
         recipeListBox.setDisable(true);
         recipeTitle.setText("New Recipe");
+        Button backButton = new Button("Back");
         Label nameLabel = new Label("Recipe name: ");
         TextField name = new TextField();
         Label cookLabel = new Label("Total cooking time: ");
@@ -51,9 +52,9 @@ public class RecipeController implements Initializable {
         Label dirsLabel = new Label("Directions: ");
         TextArea directions = new TextArea();
         Button createRecipe = new Button("Create");
-        recipeMain.getChildren().addAll(recipeTitle, nameLabel, name, cookLabel, cook, ingsLabel, ingredients, dirsLabel,
+        recipeMain.getChildren().addAll(recipeTitle, backButton, nameLabel, name, cookLabel, cook, ingsLabel, ingredients, dirsLabel,
                 directions, createRecipe);
-        createRecipe.addEventHandler(ActionEvent.ACTION, (e) -> {
+        backButton.addEventHandler(ActionEvent.ACTION, (e) -> {
             recipeListBox.setDisable(false);
             recipeListBox.requestFocus();
             recipeMain.getChildren().clear();
