@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipe.RecipeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipe.RecipeController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MenuBar fx:id="myMenu">
+            <MenuBar fx:id="myMenu" VBox.vgrow="NEVER">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
@@ -40,9 +40,9 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <SplitPane dividerPositions="0.3" prefHeight="371.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+            <SplitPane dividerPositions="0.2" VBox.vgrow="ALWAYS">
               <items>
-                  <VBox fx:id="recipeListBox">
+                  <VBox fx:id="recipeListBox" prefWidth="200.0">
                      <children>
                         <ListView fx:id="recipeList" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                      </children>

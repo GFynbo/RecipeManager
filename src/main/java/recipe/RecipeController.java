@@ -5,16 +5,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.controlsfx.validation.ValidationSupport;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,8 +32,13 @@ public class RecipeController implements Initializable {
 
     @FXML
     protected void addRecipe(ActionEvent actionEvent) throws Exception {
+        // clear window for the inputs and disable the menu
         recipeMain.getChildren().clear();
         recipeListBox.setDisable(true);
+
+        // update labels and set them on the page with inputs and validation
+        ValidationSupport validationSupport = new ValidationSupport();
+        validationSupport.setErrorDecorationEnabled(false);
         recipeTitle.setText("New Recipe");
         Button backButton = new Button("Back");
         Label nameLabel = new Label("Recipe name: ");
@@ -50,10 +52,22 @@ public class RecipeController implements Initializable {
         Button createRecipe = new Button("Create");
         recipeMain.getChildren().addAll(recipeTitle, backButton, nameLabel, name, cookLabel, cook, ingsLabel, ingredients, dirsLabel,
                 directions, createRecipe);
+
+        // the two buttons on the main pane
+        // back button
         backButton.addEventHandler(ActionEvent.ACTION, (e) -> {
             recipeListBox.setDisable(false);
             recipeMain.getChildren().clear();
             recipeList.getSelectionModel().selectFirst();
+        });
+
+        // create button
+        createRecipe.addEventHandler(ActionEvent.ACTION, (e) -> {
+            recipeListBox.setDisable(false);
+            recipeMain.getChildren().clear();
+            recipeList.getSelectionModel().selectFirst();
+            validationSupport.setErrorDecorationEnabled(true);
+            validationSupport.redecorate();
         });
     }
 
@@ -85,8 +99,10 @@ public class RecipeController implements Initializable {
         Recipe spg = new Recipe(name, ings, direct, ct, rv);
         recipes.add(spg);
 
+        // update the list item with the new recipes
         recipeList.setItems(recipes);
 
+        // add custom list item functionality
         recipeList.setCellFactory(param -> new ListCell<Recipe>() {
             @Override
             protected void updateItem(Recipe item, boolean empty) {
@@ -100,6 +116,7 @@ public class RecipeController implements Initializable {
             }
         });
 
+        // update the main view when selection is changed
         recipeList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Recipe>() {
             @Override
             public void changed(ObservableValue<? extends Recipe> observable, Recipe oldValue, Recipe newValue) {
