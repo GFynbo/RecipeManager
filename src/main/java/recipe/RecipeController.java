@@ -1,5 +1,7 @@
 package recipe;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +19,7 @@ import org.controlsfx.control.Rating;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.io.*;
 import java.util.*;
@@ -29,23 +32,15 @@ public class RecipeController implements Initializable {
     @FXML private VBox recipeMain;
     @FXML private VBox recipeListBox;
     @FXML private ObservableList<Recipe> recipes = FXCollections.observableArrayList();
+    final File file = new File("/tmp/recipes.json");
 
     public void saveChanges() {
         try {
-            FileOutputStream fos = new FileOutputStream("/tmp/recipes.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fos);
+            Gson gson = new Gson();
 
-            ArrayList<Recipe> recps = new ArrayList<>();
-
-            // save the entire list
-            for (int i = 0; i < recipes.size(); i++) {
-                recps.add(recipes.get(i));
+            try (final FileWriter fileWriter = new FileWriter(file)) {
+                gson.toJson(recipes, fileWriter);
             }
-
-            out.writeObject(recps);
-
-            out.close();
-            fos.close();
             System.out.printf("Serialized data is saved in /tmp/recipes.ser");
         } catch (IOException i) {
             i.printStackTrace();
@@ -133,24 +128,14 @@ public class RecipeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         // deserialize and add recipes from saved data
-        try {
-            FileInputStream fileIn = new FileInputStream("/tmp/recipes.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            ArrayList<Recipe> rcp = new ArrayList<Recipe>();
-            try {
-                rcp = (ArrayList) in.readObject();
-                for (int i = 0; i < rcp.size(); i++) {
-                    recipes.add(rcp.get(i));
-                }
-            }
-            catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            in.close();
-            fileIn.close();
+        Type recipeType = new TypeToken<ObservableList<Recipe>>() {}.getType();
+        Gson gson = new Gson();
+        try (final FileReader fileReader = new FileReader(file)) {
+            recipes = gson.fromJson(fileReader, recipeType);
+        } catch (FileNotFoundException e ) {
+            e.printStackTrace();
         } catch (IOException i) {
             i.printStackTrace();
-            return;
         }
 
         // update the list item with the new recipes
