@@ -3,57 +3,40 @@ package recipe;
 import java.util.Scanner;
 
 public class Directions {
-    private String[] directions;
+    private String directions;
 
-    public Directions(int numSteps, String[] directions) {
+    public Directions(String directions) {
         System.out.println("This is the directions constructor!");
-        this.directions = new String[numSteps];
-
         this.directions = directions;
-    }
-
-    public Directions(int numSteps) {
-        System.out.println("This is the directions constructor!");
-        this.directions = new String[numSteps];
-
-        Scanner getDirections = new Scanner(System.in);
-
-        // have the user input the directions
-        for (int i = 0; i < numSteps; i++) {
-            System.out.println("Input step " + (i + 1) + ": ");
-            directions[i] = getDirections.nextLine();
-        }
-        // return directions to user so they can see what they wrote
-        for (int i = 0; i < numSteps; i++) {
-            System.out.println("Step " + (i + 1) + ": " + directions[i]);
-        }
     }
 
     public Directions() {
         // get the number of steps
         Scanner getDirections = new Scanner(System.in);
-        System.out.println("Input the total number of steps here: ");
-        int numSteps = Integer.parseInt(getDirections.nextLine());
 
         // setup directions
-        this.directions = new String[numSteps];
+        this.directions = new String();
+        int stepCount = 0;
 
         // have the user input the directions
-        for (int i = 0; i < numSteps; i++) {
-            System.out.println("Input step " + (i + 1) + ": ");
-            directions[i] = getDirections.nextLine();
-        }
-        // return directions to user so they can see what they wrote
-        for (int i = 0; i < numSteps; i++) {
-            System.out.println("Step " + (i + 1) + ": " + directions[i]);
+        while (true) {
+            stepCount++;
+            System.out.println("Input step (q/Q to quit):");
+            String tempDirections = getDirections.nextLine();
+            if (tempDirections.equals("q") || tempDirections.equals("Q")) {
+                break;
+            }
+            else {
+                directions += "\nStep " + stepCount + ": " + tempDirections +"\n\n";
+            }
         }
     }
 
     public int returnDirectionCount() {
-        return this.directions.length;
+        return 1;
     }
 
-    public String[] returnDirections() {
+    public String returnDirections() {
         return this.directions;
     }
 }

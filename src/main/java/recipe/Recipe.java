@@ -36,38 +36,32 @@ public class Recipe {
     }
 
     public String getCookTime() {
-        String cook = new String(Integer.toString(cts.returnTime()));
+        String cook = cts.returnTime();
         return cook;
     }
 
     public String getDirections() {
-        String[] directions = dirs.returnDirections();
-        String outDirections = "";
-        for (int i = 0; i < directions.length; i++) {
-            outDirections += "Step " + (i + 1) + ": " + directions[i] + "\n\n";
-        }
-        return outDirections;
+        String directions = dirs.returnDirections();
+        return directions;
     }
 
     public String getIngredients() {
         String outIngredients = "";
-        outIngredients += ings.returnMeasurement() + " " + ings.returnIngredient() + "\n";
+        outIngredients += ings.returnIngredient() + "\n";
         return outIngredients;
     }
 
     public String toString() {
         String recipePrint = "";
 
-        String[] steps = dirs.returnDirections();
+        String steps = dirs.returnDirections();
 
         recipePrint += (name + "\n\n");
         recipePrint += ("Cooking time: " + cts.returnTime() + " minutes\n\n");
         recipePrint += ("Ingredients:\n");
-        recipePrint += (ings.returnIngredient() + " - " + ings.returnMeasurement() + "\n\n");
+        recipePrint += (ings.returnIngredient() + "\n\n");
         recipePrint += ("recipe.Directions:\n");
-        for (int i = 0; i < dirs.returnDirectionCount(); i++) {
-            recipePrint += ("Step " + (i + 1) + ": " + steps[i] + "\n");
-        }
+        recipePrint += dirs.returnDirections();
         recipePrint += ("\n");
         recipePrint += ("recipe.Review: " + rv.returnStars() + "/5");
 

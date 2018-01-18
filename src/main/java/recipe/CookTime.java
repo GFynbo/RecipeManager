@@ -3,9 +3,9 @@ package recipe;
 import java.util.Scanner;
 
 public class CookTime {
-    private int totalTime;
+    private String totalTime;
 
-    public CookTime(int time) {
+    public CookTime(String time) {
         this.totalTime = time;
         System.out.println("This is the cook time constructor with a total time " + totalTime + "!");
     }
@@ -14,11 +14,11 @@ public class CookTime {
         Scanner sc = new Scanner(System.in);
         System.out.println("This is the cook time constructor!");
         System.out.println("Please input the total cooking time: ");
-        int time = Integer.parseInt(sc.nextLine());
+        String time = (sc.nextLine());
         this.totalTime = time;
     }
 
-    public int returnTime() {
+    public String returnTime() {
         return this.totalTime;
     }
 }

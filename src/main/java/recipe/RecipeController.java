@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +24,7 @@ public class RecipeController implements Initializable {
     @FXML private Label recipeTitle;
     @FXML private VBox recipeMain;
     @FXML private VBox recipeListBox;
+    @FXML private ObservableList<Recipe> recipes = FXCollections.observableArrayList();
 
     @FXML
     protected void closeWindow(ActionEvent actionEvent) {
@@ -41,14 +43,23 @@ public class RecipeController implements Initializable {
         validationSupport.setErrorDecorationEnabled(false);
         recipeTitle.setText("New Recipe");
         Button backButton = new Button("Back");
+
         Label nameLabel = new Label("Recipe name: ");
         TextField name = new TextField();
+        validationSupport.registerValidator(name, Validator.createEmptyValidator("Recipe name is required"));
+
         Label cookLabel = new Label("Total cooking time: ");
         TextField cook = new TextField();
+        validationSupport.registerValidator(cook, Validator.createEmptyValidator("Cooking time is required"));
+
         Label ingsLabel = new Label("Ingredients: ");
         TextArea ingredients = new TextArea();
+        validationSupport.registerValidator(ingredients, Validator.createEmptyValidator("Ingredients are required"));
+
         Label dirsLabel = new Label("Directions: ");
         TextArea directions = new TextArea();
+        validationSupport.registerValidator(directions, Validator.createEmptyValidator("Directions are required"));
+
         Button createRecipe = new Button("Create");
         recipeMain.getChildren().addAll(recipeTitle, backButton, nameLabel, name, cookLabel, cook, ingsLabel, ingredients, dirsLabel,
                 directions, createRecipe);
@@ -63,37 +74,55 @@ public class RecipeController implements Initializable {
 
         // create button
         createRecipe.addEventHandler(ActionEvent.ACTION, (e) -> {
-            recipeListBox.setDisable(false);
-            recipeMain.getChildren().clear();
-            recipeList.getSelectionModel().selectFirst();
-            validationSupport.setErrorDecorationEnabled(true);
-            validationSupport.redecorate();
+            // show validation errors if its invalid
+            if (validationSupport.isInvalid()) {
+                validationSupport.setErrorDecorationEnabled(true);
+                validationSupport.redecorate();
+            }
+            // create recipe and move back to the main menu
+            else {
+                System.out.println("MAKING THE RECIPE");
+
+                // add the recipe here
+                String recipeName = name.getText();
+                String dirs = directions.getText();
+                Ingredient ings = new Ingredient("Salt 1 Tbsp");
+                Directions direct = new Directions(dirs);
+                CookTime ct = new CookTime("15 minutes");
+                Review rv = new Review(4);
+
+                Recipe mb = new Recipe(recipeName, ings, direct, ct, rv);
+                recipes.add(mb);
+
+                recipeListBox.setDisable(false);
+                recipeMain.getChildren().clear();
+                recipeList.getSelectionModel().selectFirst();
+            }
         });
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<Recipe> recipes = FXCollections.observableArrayList();
 
         // Add initial recipes for testing
         String name = "Meatballs";
-        String[] dirs = {"Combine beef, veal, and pork in a large bowl. Add garlic, eggs, cheese, parsley, salt and pepper.",
-                "Blend bread crumbs into meat mixture. Slowly add the water 1/2 cup at a time. The mixture should be very moist but still hold its shape if rolled into meatballs. (I usually use about 1 1/4 cups of water). Shape into meatballs.",
-                "Heat olive oil in a large skillet. Fry meatballs in batches. When the meatball is very brown and slightly crisp remove from the heat and drain on a paper towel. (If your mixture is too wet, cover the meatballs while they are cooking so that they hold their shape better.)"};
-        Ingredient ings = new Ingredient("Salt", "1 Tbsp");
-        Directions direct = new Directions(3, dirs);
-        CookTime ct = new CookTime(15);
+        String dirs = "Combine beef, veal, and pork in a large bowl. Add garlic, eggs, cheese, parsley, salt and pepper.\n" +
+                "Blend bread crumbs into meat mixture. Slowly add the water 1/2 cup at a time. The mixture should be very moist but still hold its shape if rolled into meatballs. (I usually use about 1 1/4 cups of water). Shape into meatballs.\n" +
+                "Heat olive oil in a large skillet. Fry meatballs in batches. When the meatball is very brown and slightly crisp remove from the heat and drain on a paper towel. (If your mixture is too wet, cover the meatballs while they are cooking so that they hold their shape better.)";
+        Ingredient ings = new Ingredient("1 Tbsp of salt");
+        Directions direct = new Directions(dirs);
+        CookTime ct = new CookTime("15 minutes");
         Review rv = new Review(4);
 
         Recipe mb = new Recipe(name, ings, direct, ct, rv);
         recipes.add(mb);
 
         name = "Spaghetti";
-        String[] directs = {"Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease.",
-                "Stir diced tomatoes, tomato sauce, and tomato paste into the pan. Season with oregano, basil, salt, and pepper. Simmer spaghetti sauce for 1 hour, stirring occasionally."};
-        ings = new Ingredient("Salt", "1 tsp");
-        direct = new Directions(3, directs);
-        ct = new CookTime(10);
+        String directs = "Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease.\n" +
+                "Stir diced tomatoes, tomato sauce, and tomato paste into the pan. Season with oregano, basil, salt, and pepper. Simmer spaghetti sauce for 1 hour, stirring occasionally.";
+        ings = new Ingredient("1 pinch of salt");
+        direct = new Directions(directs);
+        ct = new CookTime("10 minutes");
         rv = new Review(5);
 
         Recipe spg = new Recipe(name, ings, direct, ct, rv);
@@ -131,8 +160,6 @@ public class RecipeController implements Initializable {
                 recipeDirections.setWrapText(true);
                 recipeIngredients.setWrapText(true);
                 recipeMain.getChildren().addAll(recipeTitle, recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
-                recipeMain.setPadding(new Insets(10));
-                recipeMain.setSpacing(10);
             }
         });
     }

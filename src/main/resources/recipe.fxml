@@ -49,7 +49,7 @@
                   </VBox>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
-                        <VBox fx:id="recipeMain">
+                        <VBox fx:id="recipeMain" spacing="10.0">
                            <children>
                               <HBox VBox.vgrow="NEVER">
                                  <children>
@@ -58,9 +58,6 @@
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
-                                       <padding>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </padding>
                                     </Label>
                                     <Region HBox.hgrow="ALWAYS" />
                                  </children>
@@ -116,6 +113,9 @@
                               </HBox>
                               <Region VBox.vgrow="ALWAYS" />
                            </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
                         </VBox>
                      </content>
                   </ScrollPane>
