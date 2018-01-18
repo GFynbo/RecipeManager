@@ -81,22 +81,19 @@ public class RecipeController implements Initializable {
             }
             // create recipe and move back to the main menu
             else {
-                System.out.println("MAKING THE RECIPE");
-
                 // add the recipe here
                 String recipeName = name.getText();
-                String dirs = directions.getText();
-                Ingredient ings = new Ingredient("Salt 1 Tbsp");
-                Directions direct = new Directions(dirs);
-                CookTime ct = new CookTime("15 minutes");
-                Review rv = new Review(4);
+                Ingredient ings = new Ingredient(ingredients.getText());
+                Directions direct = new Directions(directions.getText());
+                CookTime ct = new CookTime(cook.getText());
+                Review rv = new Review(0);
 
                 Recipe mb = new Recipe(recipeName, ings, direct, ct, rv);
                 recipes.add(mb);
 
                 recipeListBox.setDisable(false);
                 recipeMain.getChildren().clear();
-                recipeList.getSelectionModel().selectFirst();
+                recipeList.getSelectionModel().selectLast();
             }
         });
     }
