@@ -2,7 +2,7 @@ package recipe;
 
 import java.util.Scanner;
 
-public class Ingredient {
+public class Ingredient implements java.io.Serializable {
     private String ingredient;
 
     public Ingredient(String ingredientName) {

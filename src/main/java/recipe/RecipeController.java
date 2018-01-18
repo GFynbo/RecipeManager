@@ -1,8 +1,10 @@
 package recipe;
 
+import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,7 +18,8 @@ import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.*;
+import java.util.*;
 
 public class RecipeController implements Initializable {
 
@@ -26,6 +29,28 @@ public class RecipeController implements Initializable {
     @FXML private VBox recipeMain;
     @FXML private VBox recipeListBox;
     @FXML private ObservableList<Recipe> recipes = FXCollections.observableArrayList();
+
+    public void saveChanges() {
+        try {
+            FileOutputStream fos = new FileOutputStream("/tmp/recipes.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fos);
+
+            ArrayList<Recipe> recps = new ArrayList<>();
+
+            // save the entire list
+            for (int i = 0; i < recipes.size(); i++) {
+                recps.add(recipes.get(i));
+            }
+
+            out.writeObject(recps);
+
+            out.close();
+            fos.close();
+            System.out.printf("Serialized data is saved in /tmp/recipes.ser");
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+    }
 
     @FXML
     protected void closeWindow(ActionEvent actionEvent) {
@@ -107,29 +132,26 @@ public class RecipeController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        // Add initial recipes for testing
-        String name = "Meatballs";
-        String dirs = "Combine beef, veal, and pork in a large bowl. Add garlic, eggs, cheese, parsley, salt and pepper.\n\n" +
-                "Blend bread crumbs into meat mixture. Slowly add the water 1/2 cup at a time. The mixture should be very moist but still hold its shape if rolled into meatballs. (I usually use about 1 1/4 cups of water). Shape into meatballs.\n\n" +
-                "Heat olive oil in a large skillet. Fry meatballs in batches. When the meatball is very brown and slightly crisp remove from the heat and drain on a paper towel. (If your mixture is too wet, cover the meatballs while they are cooking so that they hold their shape better.)";
-        Ingredient ings = new Ingredient("1 Tbsp of salt");
-        Directions direct = new Directions(dirs);
-        CookTime ct = new CookTime("15 minutes");
-        Review rv = new Review(4);
-
-        Recipe mb = new Recipe(name, ings, direct, ct, rv);
-        recipes.add(mb);
-
-        name = "Spaghetti";
-        String directs = "Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease.\n\n" +
-                "Stir diced tomatoes, tomato sauce, and tomato paste into the pan. Season with oregano, basil, salt, and pepper. Simmer spaghetti sauce for 1 hour, stirring occasionally.";
-        ings = new Ingredient("1 pinch of salt");
-        direct = new Directions(directs);
-        ct = new CookTime("10 minutes");
-        rv = new Review(5);
-
-        Recipe spg = new Recipe(name, ings, direct, ct, rv);
-        recipes.add(spg);
+        // deserialize and add recipes from saved data
+        try {
+            FileInputStream fileIn = new FileInputStream("/tmp/recipes.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            ArrayList<Recipe> rcp = new ArrayList<Recipe>();
+            try {
+                rcp = (ArrayList) in.readObject();
+                for (int i = 0; i < rcp.size(); i++) {
+                    recipes.add(rcp.get(i));
+                }
+            }
+            catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            in.close();
+            fileIn.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+            return;
+        }
 
         // update the list item with the new recipes
         recipeList.setItems(recipes);

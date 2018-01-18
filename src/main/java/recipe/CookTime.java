@@ -2,7 +2,7 @@ package recipe;
 
 import java.util.Scanner;
 
-public class CookTime {
+public class CookTime implements java.io.Serializable {
     private String totalTime;
 
     public CookTime(String time) {

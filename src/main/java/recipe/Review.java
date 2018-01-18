@@ -2,7 +2,7 @@ package recipe;
 
 import java.util.Scanner;
 
-public class Review {
+public class Review implements java.io.Serializable {
     private int stars;
 
     public Review(int givenStars) {

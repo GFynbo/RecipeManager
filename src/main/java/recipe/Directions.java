@@ -2,7 +2,7 @@ package recipe;
 
 import java.util.Scanner;
 
-public class Directions {
+public class Directions implements java.io.Serializable {
     private String directions;
 
     public Directions(String directions) {

@@ -1,6 +1,6 @@
 package recipe;
 
-public class Recipe {
+public class Recipe implements java.io.Serializable {
     // class variables for the recipe
     private Ingredient ings;
     private Directions dirs;
