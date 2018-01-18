@@ -11,6 +11,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 
@@ -52,6 +53,9 @@ public class RecipeController implements Initializable {
         TextField cook = new TextField();
         validationSupport.registerValidator(cook, Validator.createEmptyValidator("Cooking time is required"));
 
+        Label ratingLabel = new Label("Rating: ");
+        Rating rate = new Rating(5);
+
         Label ingsLabel = new Label("Ingredients: ");
         TextArea ingredients = new TextArea();
         validationSupport.registerValidator(ingredients, Validator.createEmptyValidator("Ingredients are required"));
@@ -61,7 +65,7 @@ public class RecipeController implements Initializable {
         validationSupport.registerValidator(directions, Validator.createEmptyValidator("Directions are required"));
 
         Button createRecipe = new Button("Create");
-        recipeMain.getChildren().addAll(recipeTitle, backButton, nameLabel, name, cookLabel, cook, ingsLabel, ingredients, dirsLabel,
+        recipeMain.getChildren().addAll(recipeTitle, backButton, nameLabel, name, cookLabel, cook, ratingLabel, rate, ingsLabel, ingredients, dirsLabel,
                 directions, createRecipe);
 
         // the two buttons on the main pane
@@ -86,11 +90,12 @@ public class RecipeController implements Initializable {
                 Ingredient ings = new Ingredient(ingredients.getText());
                 Directions direct = new Directions(directions.getText());
                 CookTime ct = new CookTime(cook.getText());
-                Review rv = new Review(0);
+                Review rv = new Review((int) rate.getRating());
 
                 Recipe mb = new Recipe(recipeName, ings, direct, ct, rv);
                 recipes.add(mb);
 
+                // re-enable the menu and reload the screen
                 recipeListBox.setDisable(false);
                 recipeMain.getChildren().clear();
                 recipeList.getSelectionModel().selectLast();
