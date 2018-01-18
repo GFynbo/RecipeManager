@@ -55,6 +55,7 @@ public class RecipeController implements Initializable {
 
         Label ratingLabel = new Label("Rating: ");
         Rating rate = new Rating(5);
+        rate.setUpdateOnHover(true);
 
         Label ingsLabel = new Label("Ingredients: ");
         TextArea ingredients = new TextArea();
@@ -108,8 +109,8 @@ public class RecipeController implements Initializable {
 
         // Add initial recipes for testing
         String name = "Meatballs";
-        String dirs = "Combine beef, veal, and pork in a large bowl. Add garlic, eggs, cheese, parsley, salt and pepper.\n" +
-                "Blend bread crumbs into meat mixture. Slowly add the water 1/2 cup at a time. The mixture should be very moist but still hold its shape if rolled into meatballs. (I usually use about 1 1/4 cups of water). Shape into meatballs.\n" +
+        String dirs = "Combine beef, veal, and pork in a large bowl. Add garlic, eggs, cheese, parsley, salt and pepper.\n\n" +
+                "Blend bread crumbs into meat mixture. Slowly add the water 1/2 cup at a time. The mixture should be very moist but still hold its shape if rolled into meatballs. (I usually use about 1 1/4 cups of water). Shape into meatballs.\n\n" +
                 "Heat olive oil in a large skillet. Fry meatballs in batches. When the meatball is very brown and slightly crisp remove from the heat and drain on a paper towel. (If your mixture is too wet, cover the meatballs while they are cooking so that they hold their shape better.)";
         Ingredient ings = new Ingredient("1 Tbsp of salt");
         Directions direct = new Directions(dirs);
@@ -120,7 +121,7 @@ public class RecipeController implements Initializable {
         recipes.add(mb);
 
         name = "Spaghetti";
-        String directs = "Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease.\n" +
+        String directs = "Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease.\n\n" +
                 "Stir diced tomatoes, tomato sauce, and tomato paste into the pan. Season with oregano, basil, salt, and pepper. Simmer spaghetti sauce for 1 hour, stirring occasionally.";
         ings = new Ingredient("1 pinch of salt");
         direct = new Directions(directs);
