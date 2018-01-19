@@ -14,6 +14,9 @@ various additional features. Tasks are outlined below.
     * [x] Create and add new recipe model to list view on new recipe form
     * [ ] Edit recipe option
     * [ ] Beautify the recipe display
+    * [ ] Add import recipe feature
+    * [ ] Add a calendar
+    * [ ] Add and allow images under the recipes
 * [x] Setup JavaFX
     * [x] Add fxml files
     * [x] Fill out controller
