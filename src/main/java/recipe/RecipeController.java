@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
@@ -169,8 +170,9 @@ public class RecipeController implements Initializable {
                 Label recipeReview = new Label("Your review: " + newValue.getReview() + "/5 stars.\n");
                 Label recipeIngredients = new Label("Ingredients:\n\n" + newValue.getIngredients() + "\n");
                 Label recipeDirections = new Label("Directions:\n\n" + newValue.getDirections());
-                FlowPane textFlow = new FlowPane(recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
-                //textFlow.setStyle("-fx-font: 14 arial;");
+                FlowPane textFlow = new FlowPane();
+                textFlow.getChildren().addAll(recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
+                textFlow.setOrientation(Orientation.VERTICAL);
                 recipeMain.getChildren().addAll(recipeTitle, textFlow);
             }
         });

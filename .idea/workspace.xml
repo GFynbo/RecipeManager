@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c63c867-efa3-4fdc-aace-29d32cf272dc" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/recipe/RecipeController.java" afterPath="$PROJECT_DIR$/src/main/java/recipe/RecipeController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -101,13 +99,13 @@
       <file leaf-file-name="RecipeController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/recipe/RecipeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="172" column="18" lean-forward="false" selection-start-line="172" selection-start-column="18" selection-end-line="172" selection-end-column="18" />
+            <state relative-caret-position="333">
+              <caret line="174" column="60" lean-forward="false" selection-start-line="174" selection-start-column="60" selection-end-line="174" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1039#1047#0" expanded="true" />
-                <element signature="e#5786#6166#0" expanded="true" />
-                <element signature="e#6165#6166#0" expanded="true" />
+                <element signature="e#1075#1083#0" expanded="true" />
+                <element signature="e#5822#6202#0" expanded="true" />
+                <element signature="e#6201#6202#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -977,13 +975,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/recipe/RecipeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="172" column="18" lean-forward="false" selection-start-line="172" selection-start-column="18" selection-end-line="172" selection-end-column="18" />
+        <state relative-caret-position="333">
+          <caret line="174" column="60" lean-forward="false" selection-start-line="174" selection-start-column="60" selection-end-line="174" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1039#1047#0" expanded="true" />
-            <element signature="e#5786#6166#0" expanded="true" />
-            <element signature="e#6165#6166#0" expanded="true" />
+            <element signature="e#1075#1083#0" expanded="true" />
+            <element signature="e#5822#6202#0" expanded="true" />
+            <element signature="e#6201#6202#0" expanded="true" />
           </folding>
         </state>
       </provider>
