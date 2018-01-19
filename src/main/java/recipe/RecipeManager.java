@@ -28,6 +28,7 @@ public class RecipeManager extends Application {
         RecipeController recipeController = loader.getController();
 
         primaryStage.setTitle("RecipeManager");
+        primaryStage.setMaximized(true);
 
         primaryStage.setScene(new Scene(root));
         primaryStage.setOnHidden(new EventHandler<WindowEvent>() {

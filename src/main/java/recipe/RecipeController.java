@@ -67,6 +67,9 @@ public class RecipeController implements Initializable {
         ValidationSupport validationSupport = new ValidationSupport();
         validationSupport.setErrorDecorationEnabled(false);
         recipeTitle.setText("New Recipe");
+
+        Separator seperateRecipeName = new Separator();
+
         Button backButton = new Button("Back");
 
         Label nameLabel = new Label("Recipe name: ");
@@ -90,7 +93,7 @@ public class RecipeController implements Initializable {
         validationSupport.registerValidator(directions, Validator.createEmptyValidator("Directions are required"));
 
         Button createRecipe = new Button("Create");
-        recipeMain.getChildren().addAll(recipeTitle, backButton, nameLabel, name, cookLabel, cook, ratingLabel, rate, ingsLabel, ingredients, dirsLabel,
+        recipeMain.getChildren().addAll(recipeTitle, seperateRecipeName, backButton, nameLabel, name, cookLabel, cook, ratingLabel, rate, ingsLabel, ingredients, dirsLabel,
                 directions, createRecipe);
 
         // the two buttons on the main pane
@@ -131,7 +134,7 @@ public class RecipeController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        // deserialize and add recipes from saved data
+        // deserialize and add recipes from saved data using GSON
         Gson gson = new Gson();
         try (final FileReader fileReader = new FileReader(file)) {
             ArrayList<Recipe> tempRecipes = gson.fromJson(fileReader, new TypeToken<ArrayList<Recipe>>() {}.getType());
@@ -166,6 +169,7 @@ public class RecipeController implements Initializable {
                 recipeMain.getChildren().clear();
                 recipeTitle.setText(newValue.getName());
                 recipeTitle.setStyle("-fx-font: 24 arial;");
+                Separator seperateRecipeName = new Separator();
                 Label recipeCookTime = new Label("Total cooking time: " + newValue.getCookTime() + " minutes.\n");
                 Label recipeReview = new Label("Your review: " + newValue.getReview() + "/5 stars.\n");
                 Label recipeIngredients = new Label("Ingredients:\n\n" + newValue.getIngredients() + "\n");
@@ -173,7 +177,7 @@ public class RecipeController implements Initializable {
                 FlowPane textFlow = new FlowPane();
                 textFlow.getChildren().addAll(recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
                 textFlow.setOrientation(Orientation.VERTICAL);
-                recipeMain.getChildren().addAll(recipeTitle, textFlow);
+                recipeMain.getChildren().addAll(recipeTitle, seperateRecipeName, textFlow);
             }
         });
     }
