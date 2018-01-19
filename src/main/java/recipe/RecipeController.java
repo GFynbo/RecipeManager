@@ -128,10 +128,11 @@ public class RecipeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         // deserialize and add recipes from saved data
-        Type recipeType = new TypeToken<ObservableList<Recipe>>() {}.getType();
         Gson gson = new Gson();
         try (final FileReader fileReader = new FileReader(file)) {
-            recipes = gson.fromJson(fileReader, recipeType);
+            ArrayList<Recipe> tempRecipes = gson.fromJson(fileReader, new TypeToken<ArrayList<Recipe>>() {}.getType());
+            System.out.println(tempRecipes);
+            recipes = FXCollections.observableArrayList(tempRecipes);
         } catch (FileNotFoundException e ) {
             e.printStackTrace();
         } catch (IOException i) {
