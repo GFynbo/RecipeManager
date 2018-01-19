@@ -1,21 +1,36 @@
-# recipe.RecipeManager
+# RecipeManager
 
-Welcome to the recipe.RecipeManager! This is a Java project written as a way to store and keep track of tested recipes with 
+Welcome to the RecipeManager! This is a Java project written as a way to store and keep track of tested recipes with 
 various additional features. Tasks are outlined below.
 
 ## Tasks
-* [ ] Finish the following classes:
-    * [ ] recipe.Recipe
-    * [ ] recipe.Ingredient
-    * [ ] recipe.Directions
-    * [ ] recipe.CookTime
-    * [ ] recipe.Review
+* [ ] GUI Features
+    * [x] New recipe button and form
+    * [x] Back button on new recipe
+    * [x] ListView and dynamically loaded pane with recipe information
+    * [x] Data persistence with GSON
+    * [x] New recipe form validation with ControlsFX validation
+    * [x] Close button and save on close
+    * [x] Create and add new recipe model to list view on new recipe form
+    * [ ] Edit recipe option
+    * [ ] Beautify the recipe display
+* [x] Setup JavaFX
+    * [x] Add fxml files
+    * [x] Fill out controller
+* [x] Finish the following classes:
+    * [x] Recipe
+    * [x] Ingredient
+    * [x] Directions
+    * [x] CookTime
+    * [x] Review
+    * [x] RecipeManager
+    * [x] RecipeController
 * [ ] Add the rest of the features and directions to the README
-* [ ] Add additional classes for future features
+* [x] Add additional classes for future features
 
 ## How to run
-1. Ensure you have Java 8 SDK
-2. TODO
+1. Ensure you have Java 8 SDK and the listed Maven dependencies
+2. Intellij IDE
 
 ## Footer
 
