@@ -13,7 +13,10 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 import org.controlsfx.validation.ValidationSupport;
@@ -161,15 +164,14 @@ public class RecipeController implements Initializable {
             public void changed(ObservableValue<? extends Recipe> observable, Recipe oldValue, Recipe newValue) {
                 recipeMain.getChildren().clear();
                 recipeTitle.setText(newValue.getName());
-                Label recipeCookTime = new Label("Total cooking time: " + newValue.getCookTime() + " minutes");
-                Label recipeReview = new Label("Your review: " + newValue.getReview() + "/5 stars");
+                recipeTitle.setStyle("-fx-font: 24 arial;");
+                Label recipeCookTime = new Label("Total cooking time: " + newValue.getCookTime() + " minutes.\n");
+                Label recipeReview = new Label("Your review: " + newValue.getReview() + "/5 stars.\n");
                 Label recipeIngredients = new Label("Ingredients:\n\n" + newValue.getIngredients() + "\n");
                 Label recipeDirections = new Label("Directions:\n\n" + newValue.getDirections());
-                recipeCookTime.setWrapText(true);
-                recipeReview.setWrapText(true);
-                recipeDirections.setWrapText(true);
-                recipeIngredients.setWrapText(true);
-                recipeMain.getChildren().addAll(recipeTitle, recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
+                FlowPane textFlow = new FlowPane(recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
+                //textFlow.setStyle("-fx-font: 14 arial;");
+                recipeMain.getChildren().addAll(recipeTitle, textFlow);
             }
         });
     }
