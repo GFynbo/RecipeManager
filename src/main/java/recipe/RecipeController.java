@@ -75,7 +75,7 @@ public class RecipeController implements Initializable {
 
         Label ratingLabel = new Label("Rating: ");
         Rating rate = new Rating(5);
-        rate.setUpdateOnHover(true);
+        rate.setUpdateOnHover(false);
 
         Label ingsLabel = new Label("Ingredients: ");
         TextArea ingredients = new TextArea();
@@ -131,7 +131,6 @@ public class RecipeController implements Initializable {
         Gson gson = new Gson();
         try (final FileReader fileReader = new FileReader(file)) {
             ArrayList<Recipe> tempRecipes = gson.fromJson(fileReader, new TypeToken<ArrayList<Recipe>>() {}.getType());
-            System.out.println(tempRecipes);
             recipes = FXCollections.observableArrayList(tempRecipes);
         } catch (FileNotFoundException e ) {
             e.printStackTrace();

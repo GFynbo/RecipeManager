@@ -11,25 +11,7 @@ public class Directions implements java.io.Serializable {
     }
 
     public Directions() {
-        // get the number of steps
-        Scanner getDirections = new Scanner(System.in);
-
-        // setup directions
-        this.directions = new String();
-        int stepCount = 0;
-
-        // have the user input the directions
-        while (true) {
-            stepCount++;
-            System.out.println("Input step (q/Q to quit):");
-            String tempDirections = getDirections.nextLine();
-            if (tempDirections.equals("q") || tempDirections.equals("Q")) {
-                break;
-            }
-            else {
-                directions += "\nStep " + stepCount + ": " + tempDirections +"\n\n";
-            }
-        }
+        System.out.println("This is the directions constructor!");
     }
 
     public int returnDirectionCount() {

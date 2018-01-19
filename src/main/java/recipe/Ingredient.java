@@ -11,10 +11,7 @@ public class Ingredient implements java.io.Serializable {
     }
 
     public Ingredient() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("This is the ingredient constructor!");
-        System.out.println("Please input the ingredient name and measurement: ");
-        this.ingredient = sc.nextLine();
     }
 
     public String returnIngredient() {
