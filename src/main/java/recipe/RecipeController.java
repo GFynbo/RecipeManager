@@ -2,28 +2,22 @@ package recipe;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
-import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 
-import java.lang.reflect.Type;
 import java.net.URL;
 import java.io.*;
 import java.util.*;
@@ -68,7 +62,7 @@ public class RecipeController implements Initializable {
         validationSupport.setErrorDecorationEnabled(false);
         recipeTitle.setText("New Recipe");
 
-        Separator seperateRecipeName = new Separator();
+        Separator separateRecipeName = new Separator();
 
         Button backButton = new Button("Back");
 
@@ -93,7 +87,7 @@ public class RecipeController implements Initializable {
         validationSupport.registerValidator(directions, Validator.createEmptyValidator("Directions are required"));
 
         Button createRecipe = new Button("Create");
-        recipeMain.getChildren().addAll(recipeTitle, seperateRecipeName, backButton, nameLabel, name, cookLabel, cook, ratingLabel, rate, ingsLabel, ingredients, dirsLabel,
+        recipeMain.getChildren().addAll(recipeTitle, separateRecipeName, backButton, nameLabel, name, cookLabel, cook, ratingLabel, rate, ingsLabel, ingredients, dirsLabel,
                 directions, createRecipe);
 
         // the two buttons on the main pane
@@ -169,7 +163,7 @@ public class RecipeController implements Initializable {
                 recipeMain.getChildren().clear();
                 recipeTitle.setText(newValue.getName());
                 recipeTitle.setStyle("-fx-font: 24 arial;");
-                Separator seperateRecipeName = new Separator();
+                Separator separateRecipeName = new Separator();
                 Label recipeCookTime = new Label("Total cooking time: " + newValue.getCookTime() + " minutes.\n");
                 Label recipeReview = new Label("Your review: " + newValue.getReview() + "/5 stars.\n");
                 Label recipeIngredients = new Label("Ingredients:\n\n" + newValue.getIngredients() + "\n");
@@ -177,7 +171,15 @@ public class RecipeController implements Initializable {
                 FlowPane textFlow = new FlowPane();
                 textFlow.getChildren().addAll(recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
                 textFlow.setOrientation(Orientation.VERTICAL);
-                recipeMain.getChildren().addAll(recipeTitle, seperateRecipeName, textFlow);
+                Button deleteRecipe = new Button("Delete");
+
+                // the two buttons on the main pane
+                // back button
+                deleteRecipe.addEventHandler(ActionEvent.ACTION, (e) -> {
+                    recipes.remove(newValue);
+                    recipeList.getSelectionModel().selectFirst();
+                });
+                recipeMain.getChildren().addAll(recipeTitle, separateRecipeName, textFlow, deleteRecipe);
             }
         });
     }
