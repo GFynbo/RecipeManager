@@ -172,14 +172,88 @@ public class RecipeController implements Initializable {
                 textFlow.getChildren().addAll(recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
                 textFlow.setOrientation(Orientation.VERTICAL);
                 Button deleteRecipe = new Button("Delete");
+                Button editRecipe = new Button("Edit");
 
                 // the two buttons on the main pane
-                // back button
+                // delete button
                 deleteRecipe.addEventHandler(ActionEvent.ACTION, (e) -> {
                     recipes.remove(newValue);
                     recipeList.getSelectionModel().selectFirst();
                 });
-                recipeMain.getChildren().addAll(recipeTitle, separateRecipeName, textFlow, deleteRecipe);
+                // delete button
+                editRecipe.addEventHandler(ActionEvent.ACTION, (e) -> {
+                    // clear window for the inputs and disable the menu
+                    recipeMain.getChildren().clear();
+                    recipeListBox.setDisable(true);
+
+                    // update labels and set them on the page with inputs and validation
+                    ValidationSupport validationSupport = new ValidationSupport();
+                    validationSupport.setErrorDecorationEnabled(false);
+                    recipeTitle.setText("Edit " + newValue.getName());
+
+                    Button backButton = new Button("Back");
+
+                    Label nameLabel = new Label("Recipe name: ");
+                    TextField name = new TextField(newValue.getName());
+                    validationSupport.registerValidator(name, Validator.createEmptyValidator("Recipe name is required"));
+
+                    Label cookLabel = new Label("Total cooking time: ");
+                    TextField cook = new TextField(newValue.getCookTime());
+                    validationSupport.registerValidator(cook, Validator.createEmptyValidator("Cooking time is required"));
+
+                    Label ratingLabel = new Label("Rating: ");
+                    Rating rate = new Rating(5);
+                    rate.setRating((double) Integer.parseInt(newValue.getReview()));
+                    rate.setUpdateOnHover(false);
+
+                    Label ingsLabel = new Label("Ingredients: ");
+                    TextArea ingredients = new TextArea(newValue.getIngredients());
+                    validationSupport.registerValidator(ingredients, Validator.createEmptyValidator("Ingredients are required"));
+
+                    Label dirsLabel = new Label("Directions: ");
+                    TextArea directions = new TextArea(newValue.getDirections());
+                    validationSupport.registerValidator(directions, Validator.createEmptyValidator("Directions are required"));
+
+                    Button updateRecipe = new Button("Update");
+                    recipeMain.getChildren().addAll(recipeTitle, separateRecipeName, backButton, nameLabel, name, cookLabel, cook, ratingLabel, rate, ingsLabel, ingredients, dirsLabel,
+                            directions, updateRecipe);
+
+                    // the two buttons on the main pane
+                    // back button
+                    backButton.addEventHandler(ActionEvent.ACTION, (e) -> {
+                        recipeListBox.setDisable(false);
+                        recipeMain.getChildren().clear();
+                        recipeList.getSelectionModel().selectFirst();
+                    });
+
+                    // create button
+                    updateRecipe.addEventHandler(ActionEvent.ACTION, (e) -> {
+                        // show validation errors if its invalid
+                        if (validationSupport.isInvalid()) {
+                            validationSupport.setErrorDecorationEnabled(true);
+                            validationSupport.redecorate();
+                        }
+                        // create recipe and move back to the main menu
+                        else {
+                            // add the recipe here
+                            String recipeName = name.getText();
+                            Ingredient ings = new Ingredient(ingredients.getText());
+                            Directions direct = new Directions(directions.getText());
+                            CookTime ct = new CookTime(cook.getText());
+                            Review rv = new Review((int) rate.getRating());
+
+                            Recipe mb = new Recipe(recipeName, ings, direct, ct, rv);
+                            recipes.add(mb);
+
+                            // re-enable the menu and reload the screen
+                            recipeListBox.setDisable(false);
+                            recipeMain.getChildren().clear();
+                            recipeList.getSelectionModel().selectLast();
+                        }
+                    });
+                    recipeList.getSelectionModel().selectFirst();
+                });
+                recipeMain.getChildren().addAll(recipeTitle, editRecipe, separateRecipeName, textFlow, deleteRecipe);
             }
         });
     }
