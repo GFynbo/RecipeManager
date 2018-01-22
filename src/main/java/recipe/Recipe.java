@@ -51,6 +51,26 @@ public class Recipe implements java.io.Serializable {
         return outIngredients;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setReview(int rv) {
+        this.rv = new Review(new Integer(Integer.toString(rv)));
+    }
+
+    public void setCookTime(String cookTime) {
+        this.cts = new CookTime(cookTime);
+    }
+
+    public void setDirections(String directions) {
+        this.dirs = new Directions(directions);
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ings = new Ingredient(ingredients);
+    }
+
     public String toString() {
         String recipePrint = "";
 

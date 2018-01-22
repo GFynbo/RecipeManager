@@ -220,14 +220,14 @@ public class RecipeController implements Initializable {
 
                     // the two buttons on the main pane
                     // back button
-                    backButton.addEventHandler(ActionEvent.ACTION, (e) -> {
+                    backButton.addEventHandler(ActionEvent.ACTION, (f) -> {
                         recipeListBox.setDisable(false);
                         recipeMain.getChildren().clear();
                         recipeList.getSelectionModel().selectFirst();
                     });
 
                     // create button
-                    updateRecipe.addEventHandler(ActionEvent.ACTION, (e) -> {
+                    updateRecipe.addEventHandler(ActionEvent.ACTION, (g) -> {
                         // show validation errors if its invalid
                         if (validationSupport.isInvalid()) {
                             validationSupport.setErrorDecorationEnabled(true);
@@ -236,19 +236,24 @@ public class RecipeController implements Initializable {
                         // create recipe and move back to the main menu
                         else {
                             // add the recipe here
-                            String recipeName = name.getText();
-                            Ingredient ings = new Ingredient(ingredients.getText());
-                            Directions direct = new Directions(directions.getText());
-                            CookTime ct = new CookTime(cook.getText());
-                            Review rv = new Review((int) rate.getRating());
-
-                            Recipe mb = new Recipe(recipeName, ings, direct, ct, rv);
-                            recipes.add(mb);
+                            newValue.setName(name.getText());
+                            newValue.setIngredients(ingredients.getText());
+                            newValue.setDirections(directions.getText());
+                            newValue.setCookTime(cook.getText());
+                            newValue.setReview((int) rate.getRating());
 
                             // re-enable the menu and reload the screen
+                            int index = recipes.indexOf(newValue);
+                            if (index >= 0) {
+                                // hack around RT-28397
+                                //https://javafx-jira.kenai.com/browse/RT-28397
+                                recipes.set(index, null);
+                                // good enough since jdk7u40 and jdk8
+                                recipes.set(index, newValue);
+                            }
                             recipeListBox.setDisable(false);
                             recipeMain.getChildren().clear();
-                            recipeList.getSelectionModel().selectLast();
+                            recipeList.getSelectionModel().selectFirst();
                         }
                     });
                     recipeList.getSelectionModel().selectFirst();
