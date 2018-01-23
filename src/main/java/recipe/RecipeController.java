@@ -93,7 +93,7 @@ public class RecipeController implements Initializable {
         // the two buttons on the main pane
         // back button
         backButton.addEventHandler(ActionEvent.ACTION, (e) -> {
-            recipeListBox.setDisable(false);
+            recipeList.setDisable(false);
             recipeMain.getChildren().clear();
             recipeList.getSelectionModel().selectFirst();
         });
@@ -180,11 +180,11 @@ public class RecipeController implements Initializable {
                     recipes.remove(newValue);
                     recipeList.getSelectionModel().selectFirst();
                 });
-                // delete button
+                // edit button
                 editRecipe.addEventHandler(ActionEvent.ACTION, (e) -> {
                     // clear window for the inputs and disable the menu
                     recipeMain.getChildren().clear();
-                    recipeListBox.setDisable(true);
+                    recipeList.setDisable(true);
 
                     // update labels and set them on the page with inputs and validation
                     ValidationSupport validationSupport = new ValidationSupport();
@@ -221,7 +221,7 @@ public class RecipeController implements Initializable {
                     // the two buttons on the main pane
                     // back button
                     backButton.addEventHandler(ActionEvent.ACTION, (f) -> {
-                        recipeListBox.setDisable(false);
+                        recipeList.setDisable(false);
                         recipeMain.getChildren().clear();
                         recipeList.getSelectionModel().selectFirst();
                     });
@@ -245,18 +245,14 @@ public class RecipeController implements Initializable {
                             // re-enable the menu and reload the screen
                             int index = recipes.indexOf(newValue);
                             if (index >= 0) {
-                                // hack around RT-28397
-                                //https://javafx-jira.kenai.com/browse/RT-28397
-                                recipes.set(index, null);
                                 // good enough since jdk7u40 and jdk8
                                 recipes.set(index, newValue);
                             }
-                            recipeListBox.setDisable(false);
+                            recipeList.setDisable(false);
                             recipeMain.getChildren().clear();
                             recipeList.getSelectionModel().selectFirst();
                         }
                     });
-                    recipeList.getSelectionModel().selectFirst();
                 });
                 recipeMain.getChildren().addAll(recipeTitle, editRecipe, separateRecipeName, textFlow, deleteRecipe);
             }
