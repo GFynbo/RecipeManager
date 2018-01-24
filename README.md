@@ -12,11 +12,12 @@ various additional features. Tasks are outlined below.
     * [x] New recipe form validation with ControlsFX validation
     * [x] Close button and save on close
     * [x] Create and add new recipe model to list view on new recipe form
-    * [ ] Edit recipe option
+    * [x] Edit recipe option
     * [ ] Beautify the recipe display
     * [ ] Add import recipe feature
     * [ ] Add a calendar
     * [ ] Add and allow images under the recipes
+    * [ ] Fix the re-selection of recipe option.
 * [x] Setup JavaFX
     * [x] Add fxml files
     * [x] Fill out controller
