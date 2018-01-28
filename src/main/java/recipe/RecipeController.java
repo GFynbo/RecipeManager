@@ -171,6 +171,7 @@ public class RecipeController implements Initializable {
                 Label recipeDirections = new Label("Directions:\n\n" + newValue.getDirections());
                 FlowPane textFlow = new FlowPane();
                 textFlow.getChildren().addAll(recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
+                textFlow.setOrientation(Orientation.VERTICAL);
                 Button deleteRecipe = new Button("Delete");
                 Button editRecipe = new Button("Edit");
 
