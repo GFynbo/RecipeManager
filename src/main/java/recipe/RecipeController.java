@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -170,7 +171,6 @@ public class RecipeController implements Initializable {
                 Label recipeDirections = new Label("Directions:\n\n" + newValue.getDirections());
                 FlowPane textFlow = new FlowPane();
                 textFlow.getChildren().addAll(recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
-                textFlow.setOrientation(Orientation.VERTICAL);
                 Button deleteRecipe = new Button("Delete");
                 Button editRecipe = new Button("Edit");
 
