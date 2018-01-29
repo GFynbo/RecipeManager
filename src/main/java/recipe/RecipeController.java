@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 import org.controlsfx.validation.ValidationSupport;
@@ -169,9 +170,10 @@ public class RecipeController implements Initializable {
                 Label recipeReview = new Label("Your review: " + newValue.getReview() + "/5 stars.\n");
                 Label recipeIngredients = new Label("Ingredients:\n\n" + newValue.getIngredients() + "\n");
                 Label recipeDirections = new Label("Directions:\n\n" + newValue.getDirections());
-                FlowPane textFlow = new FlowPane();
+                recipeIngredients.setWrapText(true);
+                recipeDirections.setWrapText(true);
+                TextFlow textFlow = new TextFlow();
                 textFlow.getChildren().addAll(recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
-                textFlow.setOrientation(Orientation.VERTICAL);
                 Button deleteRecipe = new Button("Delete");
                 Button editRecipe = new Button("Edit");
 
