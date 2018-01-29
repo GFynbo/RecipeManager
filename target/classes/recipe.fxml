@@ -47,7 +47,7 @@
                         <ListView fx:id="recipeList" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
-                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                  <ScrollPane fx:id="scrollPaneRecipe" fitToHeight="true" fitToWidth="true">
                     <content>
                       <AnchorPane>
                            <children>

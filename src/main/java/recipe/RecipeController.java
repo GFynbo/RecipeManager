@@ -31,6 +31,7 @@ public class RecipeController implements Initializable {
     @FXML private Label recipeTitle;
     @FXML private VBox recipeMain;
     @FXML private VBox recipeListBox;
+    @FXML private ScrollPane scrollPaneRecipe;
     @FXML private ObservableList<Recipe> recipes = FXCollections.observableArrayList();
     final File file = new File("/tmp/recipes.json");
 
@@ -170,10 +171,11 @@ public class RecipeController implements Initializable {
                 Label recipeReview = new Label("Your review: " + newValue.getReview() + "/5 stars.\n");
                 Label recipeIngredients = new Label("Ingredients:\n\n" + newValue.getIngredients() + "\n");
                 Label recipeDirections = new Label("Directions:\n\n" + newValue.getDirections());
-                recipeIngredients.setWrapText(true);
-                recipeDirections.setWrapText(true);
-                TextFlow textFlow = new TextFlow();
+                recipeIngredients.setMaxWidth(scrollPaneRecipe.USE_COMPUTED_SIZE);
+                recipeDirections.setMaxWidth(scrollPaneRecipe.USE_COMPUTED_SIZE);
+                FlowPane textFlow = new FlowPane();
                 textFlow.getChildren().addAll(recipeCookTime, recipeReview, recipeIngredients, recipeDirections);
+                textFlow.setOrientation(Orientation.VERTICAL);
                 Button deleteRecipe = new Button("Delete");
                 Button editRecipe = new Button("Edit");
 
